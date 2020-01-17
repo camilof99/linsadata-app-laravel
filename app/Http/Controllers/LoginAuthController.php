@@ -14,7 +14,7 @@ class LoginAuthController extends Controller
         $datosUsuario = request()->except('_token');
 
         if($user->loginAuth($datosUsuario)){
-            return redirect('usuario');
+            return redirect('/dashboard');
         }else{
             return redirect('/')->with('Mensaje', 'Correo o contraseña incorrectos.' );
         }

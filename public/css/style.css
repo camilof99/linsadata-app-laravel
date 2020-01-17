@@ -1,4 +1,6 @@
-* {
+@import url('./main.css');
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,8 +19,12 @@
     color: #fff;
     background-color: #20ac5a;
   }
+
+  /* Login */
+
   .section_index {
     height: 100vh;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -167,3 +173,14 @@
     padding-top: 16px;
     padding-bottom: 16px;
   }
+/* End login */
+
+.form-list{
+  display: inline-block;
+}
+.select-reg{
+  width: 100%;
+  padding: 4px;
+  margin-top: 5px;
+  cursor: pointer;
+}

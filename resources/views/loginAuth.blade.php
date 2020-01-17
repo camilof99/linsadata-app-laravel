@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +7,14 @@
     <title>Document</title>
   
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/keyframes.css') }}">
 
 </head>
 <body>
+    <div class="section_index">
         <div class="bg_trans">
-          <div class="row cont_sect_index">
+          <div class="cont_sect_index">
             <div class="col-md-5 text">
               <h6>Personal altamente calificado</h6>
               <h1><b>LINSACOL S.A.S</b></h1>
@@ -33,7 +33,10 @@
                 <input type="email" name="email" id="email" placeholder="Ingresa Correo">
                 <label for="password">Contraseña</label>
                 <input type="password" name="password" id="password" placeholder="Ingresa contraseña">
-                
+                @if (Session::has('Mensaje')){{
+                    Session::get('Mensaje')
+              }}  
+                @endif
                 <input type="submit" value="Aceptar"></input>
               </form>
             </div>
@@ -41,8 +44,7 @@
         </div>
       </div>
 
-      <script type="text/javascript" src="{{ asset('query/query.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('popper/popper.min.css') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/query-3.1.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>

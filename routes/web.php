@@ -21,8 +21,10 @@ Route::resource('usuario', 'UsuarioController');
 //Auth::routes();
 
 //Route::get('/', 'HomeController@index')->name('home');
-
 Route::get('/', function () {
     return view('loginAuth');
 });
 Route::post ('/verificar', 'LoginAuthController@LoginUsuario');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
