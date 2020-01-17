@@ -11,13 +11,18 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 //Route::get('/usuario','UsuarioController@index');
 //Route::get('/usuario/create', 'UsuarioController@create');
 Route::resource('usuario', 'UsuarioController');
 
 //Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/', function () {
+    return view('loginAuth');
+});
+Route::post ('/verificar', 'LoginAuthController@LoginUsuario');

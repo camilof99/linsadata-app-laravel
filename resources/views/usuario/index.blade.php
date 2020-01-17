@@ -29,8 +29,8 @@
             <td>{{ $user->id }}</td>
             <td>{{ $user->nombre }}</td>
             <td>{{ $user->telefono }}</td>
-            <td>{{ $user->correo }}</td>
-            <td>{{ $user->usuario }}</td>
+            <td>{{ $user->email }}</td>
+            <td>{{ $user->username }}</td>
             <td>{{ $user->rol }}</td>
             <td>
 

@@ -5,14 +5,14 @@
     <label for="telefono">{{'Teléfono'}}</label>
     <input type="number" name="telefono" id="telefono" value="{{ isset($usuarios->telefono) ? $usuarios->telefono : '' }}">
     <br>
-    <label for="correo">{{'Correo'}}</label>
-    <input type="email" name="correo" id="correo" value="{{ isset($usuarios->correo) ? $usuarios->correo : '' }}">
+    <label for="email">{{'Correo'}}</label>
+    <input type="email" name="email" id="email" value="{{ isset($usuarios->email) ? $usuarios->email : '' }}">
     <br>
-    <label for="usuario">{{'Usuario'}}</label>
-    <input type="text" name="usuario" id="usuario" value="{{ isset($usuarios->usuario) ? $usuarios->usuario : '' }}">
+    <label for="username">{{'Usuario'}}</label>
+    <input type="text" name="username" id="username" value="{{ isset($usuarios->username) ? $usuarios->username : '' }}">
     <br>
-    <label for="clave">{{'Contraseña'}}</label>
-    <input type="password" name="clave" id="clave" value="">
+    <label for="password">{{'Contraseña'}}</label>
+    <input type="password" name="password" id="password" value="">
     <br>
     <label for="rol">{{'Rol'}}</label>
     <input type="number" name="rol" id="rol" value="{{ isset($usuarios->rol) ? $usuarios->rol : '' }}">

@@ -1,0 +1,22 @@
+@keyframes animation_titulo {
+    from {
+      opacity: 0;
+      top: -150px;
+    }
+    to {
+      opacity: 1;
+      top: 0;
+    }
+  }
+  
+  @-webkit-keyframes animation_titulo {
+    from {
+      opacity: 0;
+      top: -150px;
+    }
+    to {
+      opacity: 1;
+      top: 0;
+    }
+  }
+  
