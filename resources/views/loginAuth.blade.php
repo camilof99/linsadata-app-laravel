@@ -27,23 +27,33 @@
             <div class="login-box">
               <img src="{{ asset('img/icon-login.png') }}" class="avatar" alt="Avatar Image">
               <h1>INICIAR SESIÓN</h1>
-              <form method="post" action="{{ url('/verificar') }}">
-                {{ csrf_field() }}
-                <label for="email">Correo</label>
-                <input type="email" name="email" id="email" placeholder="Ingresa Correo">
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" id="password" placeholder="Ingresa contraseña">
-                @if (Session::has('Mensaje')){{
-                    Session::get('Mensaje')
-              }}  
-                @endif
-                <input type="submit" value="Aceptar"></input>
-              </form>
+              @if (session()->has('flash'))
+              <div class="alert alert-info" style="margin-top: 10px;">{{ session('flash') }}</div>
+              @endif
+              <form action="{{ route('login') }}" method="post" id="login_form">
+
+                {{csrf_field()}}
+
+                <div class="{{ $errors->has('email') ? 'has-error' : '' }}">
+                  <label for="email">Correo</label>
+                  <input type="email" name="email" id="email" placeholder="Ingresa Correo" value="{{ old('email') }}">
+                  {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
+                </div>
+
+                <div class="{{ $errors->has('password') ? 'has-error' : '' }}">
+                  <label class="lbl-pass" for="password">Contraseña</label>
+                  <input type="password" name="password" id="password" placeholder="Ingresa contraseña">
+                  {!! $errors->first('password', '<span class="help-block">:message</span>') !!}  
+                </div>
+
+                <button type="submit" class="btn_login" value="Login">Aceptar</button>
+            
+            </form>
             </div>
           </div>
         </div>
       </div>
-
+        <script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/query-3.1.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>

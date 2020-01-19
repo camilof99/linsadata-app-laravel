@@ -11,20 +11,9 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-//Route::get('/usuario','UsuarioController@index');
-//Route::get('/usuario/create', 'UsuarioController@create');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::resource('usuario', 'UsuarioController');
 
-//Auth::routes();
-
-//Route::get('/', 'HomeController@index')->name('home');
-Route::get('/', function () {
-    return view('loginAuth');
-});
-Route::post ('/verificar', 'LoginAuthController@LoginUsuario');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get( '/', 'LoginAuthController@showLoginForm');
+Route::post( 'login', 'LoginAuthController@login' )->name( 'login' );
+Route::post( 'logout', 'LoginAuthController@logout' )->name( 'logout' );

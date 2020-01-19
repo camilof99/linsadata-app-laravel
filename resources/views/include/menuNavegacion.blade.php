@@ -12,7 +12,7 @@
         <div class="full-box dashboard-sideBar-UserInfo">
             <figure class="full-box">
                 <img src="{{ url('assets/avatars/AdminMaleAvatar.png') }}" alt="UserIcon">
-                <figcaption class="text-center text-titles">User Name</figcaption>
+                <figcaption class="text-center text-titles">{{ auth()->user()->nombre }}</figcaption>
             </figure>
             <ul class="full-box list-unstyled text-center">
                 <li>
@@ -26,9 +26,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#!" title="Salir del sistema" class="btn-exit-system">
-                        <i class="zmdi zmdi-power"></i>
-                    </a>
+                    <form id="formularioaenviar" method="post" action="{{ route('logout') }}">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn-exit-system">Cerrar sesión </button>
+                    </form>
                 </li>
             </ul>
         </div>

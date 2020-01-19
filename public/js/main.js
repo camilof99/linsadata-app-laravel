@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
 	$('.btn-sideBar-SubMenu').on('click', function(e){
 		e.preventDefault();
 		var SubMenu=$(this).next('ul');
@@ -14,16 +15,24 @@ $(document).ready(function(){
 	$('.btn-exit-system').on('click', function(e){
 		e.preventDefault();
 		swal({
-		  	title: 'Are you sure?',
-		  	text: "The current session will be closed",
+		  	title: '¿Seguro quieres salir?',
+		  	text: "La sesión se cerrará",
 		  	type: 'warning',
 		  	showCancelButton: true,
 		  	confirmButtonColor: '#03A9F4',
 		  	cancelButtonColor: '#F44336',
-		  	confirmButtonText: '<i class="zmdi zmdi-run"></i> Yes, Exit!',
-		  	cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancel!'
+		  	confirmButtonText: '<i class="zmdi zmdi-run"></i> Si, Salir!',
+		  	cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then(function () {
-			window.location.href="index.html";
+			console.log('fff');
+
+			$.ajax({
+				type: $('#formularioaenviar').attr('method'), 
+				url: $('#formularioaenviar').attr('action'),
+				data: $('#formularioaenviar').serialize(),
+				success: function (data) { window.location.replace("http://localhost/proyectos/laravel/linsadata-app-laravel/public/"); } 
+			  });
+			
 		});
 	});
 	$('.btn-menu-dashboard').on('click', function(e){

@@ -2,22 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Usuario;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+
+use Auth;
 
 class LoginAuthController extends Controller
 {
     //
-    public function LoginUsuario(Request $request, Usuario $user){
-        
-        $datosUsuario = request()->except('_token');
+    public function __construct()
+    {
+        $this->middleware('guest', ['only' => 'showLoginForm']);
+    }
 
-        if($user->loginAuth($datosUsuario)){
-            return redirect('/dashboard');
-        }else{
-            return redirect('/')->with('Mensaje', 'Correo o contraseña incorrectos.' );
+    public function showLoginForm(){
+        return view('loginAuth');
+    }
+    
+    public function login(){
+    
+        $credentials = $this->validate(request(), [
+            'email' => 'email|required|string',
+            'password' => 'required|string'
+        ]);
+
+        if(Auth::attempt($credentials)){
+            return redirect()->route('dashboard');
         }
+            return back()
+            ->withErrors(['email' => 'Esos datos no coinciden en nuestros registros'])
+            ->withInput(request(['email']));
+    }
 
+    public function logout(){
+        Auth::logout();
+
+        return redirect('/');
     }
 }

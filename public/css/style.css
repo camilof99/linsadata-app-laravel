@@ -109,19 +109,20 @@
     text-align: center;
     font-size: 22px;
     color: #fff;
-    margin-top: 15px;
   }
-  
   .login-box label {
     margin: 0;
     padding: 0;
     font-weight: bold;
     display: block;
   }
+
+  .login-box .lbl-pass {
+    margin-top: 20px;
+  }
   
   .login-box input {
     width: 100%;
-    margin-bottom: 20px;
   }
   
   .login-box input[type="email"],
@@ -135,7 +136,7 @@
     font-size: 16px;
   }
   
-  .login-box input[type="submit"] {
+  .login-box .btn_login {
     border: none;
     outline: none;
     height: 40px;
@@ -143,11 +144,11 @@
     color: #fff;
     font-size: 18px;
     border-radius: 1px;
-    margin-top: 20px;
-    margin-bottom: 0;
+    width: 100%;
+    margin-top: 35px;
   }
   
-  .login-box input[type="submit"]:hover {
+  .login-box .btn_login:hover {
     cursor: pointer;
     background: #1bbb23;
     color: #000;
@@ -173,6 +174,7 @@
     padding-top: 16px;
     padding-bottom: 16px;
   }
+
 /* End login */
 
 .form-list{

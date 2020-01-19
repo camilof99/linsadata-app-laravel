@@ -4,14 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use Illuminate\Support\Facades\DB;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
     //
     use Notifiable;
 
-    public function loginAuth($datos){
+    /*public function loginAuth($datos){
 
 /*$users = DB::select('select * from usuarios where email = ?', [$datos['email']]);
 
@@ -19,7 +21,6 @@ class Usuario extends Model
             return false;
         }else{
             return true;
-        }*/ return true;
-    }
-
+        }/ return true;
+    }*/
 }
