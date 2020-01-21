@@ -17,18 +17,18 @@
             <ul class="full-box list-unstyled text-center">
                 <li>
                     <a href="my-data.html" title="Mis datos">
-                        <i class="zmdi zmdi-account-circle"></i>
+                        <i class="zmdi zmdi-account-circle "></i>
                     </a>
                 </li>
                 <li>
                     <a href="my-account.html" title="Mi cuenta">
-                        <i class="zmdi zmdi-settings"></i>
+                        <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
                     </a>
                 </li>
                 <li>
                     <form id="formularioaenviar" method="post" action="{{ route('logout') }}">
                         {{ csrf_field() }}
-                        <button type="submit" class="btn-exit-system">Cerrar sesión </button>
+                        <button type="submit" class="btn-exit-system"><i class="zmdi zmdi-power zmdi-hc-lg zmdi-hc-fw"></i></button>
                     </form>
                 </li>
             </ul>
@@ -46,10 +46,10 @@
                 </a>
                 <ul class="list-unstyled full-box">
                     <li>
-                        <a href="{{ url('usuario/create') }}"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Trabajadores</a>
+                        <a href="{{ url('usuario') }}"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Trabajadores</a>
                     </li>
                     <li>
-                        <a href=""><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Clientes</a>
+                        <a href="{{ url('cliente') }}"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Clientes</a>
                     </li>
                 </ul>
             </li>

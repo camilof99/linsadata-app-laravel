@@ -26,15 +26,17 @@
                       <input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}" class="form-control" type="text" name="direccion" id="direccion" required="" maxlength="50" value="{{ isset($usuarios->direccion) ? $usuarios->direccion : '' }}">
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6">
-                <div class="form-group label-floating">
-                      <label class="control-label">Cargo/Ocupación *</label>
-                      <select name="rol" class="select-reg custom-select custom-select-sm">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                      </select>
+            @if ($Rol != 'cliente')
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Cargo/Ocupación *</label>
+                        <select name="role" class="select-reg custom-select custom-select-sm">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 </fieldset>
@@ -52,7 +54,7 @@
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group label-floating">
                       <label class="control-label">Contraseña *</label>
-                      <input class="form-control" type="password" name="password" id="password" required="" maxlength="70">
+                      <input class="form-control" type="password" name="password" id="password" {{ $Modo == 'crear' ? 'required=""' : '' }} maxlength="70">
                 </div>
             </div>
         </div>

@@ -10,9 +10,9 @@
 </head>
 <body>
 
-    @include('include.menuNavegacion')
-
-    <!-- Content page-->
+	@include('include.menuNavegacion')
+	
+	<!-- Content page-->
 	<section class="full-box dashboard-contentPage">
 		<!-- NavBar -->
 		<nav class="full-box dashboard-Navbar">
@@ -20,14 +20,9 @@
 				<li class="pull-left">
 					<a href="#!" class="btn-menu-dashboard"><i class="zmdi zmdi-more-vert"></i></a>
 				</li>
-				<li>
-					<a href="search.html" class="btn-search">
-						<i class="zmdi zmdi-search"></i>
-					</a>
-				</li>
 			</ul>
 		</nav>
-		
+
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
@@ -56,6 +51,17 @@
 			</ul>
 		</div>
 
+		@if (count($errors) > 0)
+			<div class="alert alert-danger">
+				<p>Corrige los siguientes errores:</p>
+				<ul>
+					@foreach ($errors->all() as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+		@endif
+
 		<!-- Panel nuevo trabajador -->
 		<div class="container-fluid">
 			<div class="panel panel-info">
@@ -68,7 +74,7 @@
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }} <!-- Accedemos directo al método update -->
                     
-                        @include('usuario.form', ['Modo' => 'editar'])
+                        @include('include.form', ['Modo' => 'editar', 'Rol' => 'trabajador'])
                         
                     </form>
 				</div>

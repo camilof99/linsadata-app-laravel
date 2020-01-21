@@ -6,14 +6,13 @@ use App\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UsuarioController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -23,10 +22,10 @@ class UsuarioController extends Controller
     {
         //
         $datos['usuarios'] = Usuario::paginate(5)
-            ->where('estado', '=', '1')
-            ->where('role', '!=', '3');
+            ->where('role', '=', '3')
+            ->where('estado', '=', '1');
 
-        return view('usuario.index', $datos);
+        return view('cliente.index', $datos);
     }
 
     /**
@@ -37,7 +36,7 @@ class UsuarioController extends Controller
     public function create()
     {
         //
-        return view('usuario.create');
+        return view('cliente.create');
     }
 
     /**
@@ -63,10 +62,10 @@ class UsuarioController extends Controller
             'direccion' => $request->direccion,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $request->role
+            'role' => '3'
         ]);
         
-        return redirect('usuario')->with('Mensaje', 'Trabajador agregado correctamente.' );
+        return redirect('cliente')->with('Mensaje', 'Cliente agregado correctamente.' );
     }
 
     /**
@@ -90,7 +89,7 @@ class UsuarioController extends Controller
         //
         $usuarios = Usuario::findOrFail($id);
 
-        return view('usuario.edit', compact('usuarios'));
+        return view('cliente.edit', compact('usuarios'));
     }
 
     /**
@@ -116,12 +115,11 @@ class UsuarioController extends Controller
                 'telefono' => $request->telefono,
                 'direccion' => $request->direccion,
                 'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role' => $request->role
+                'password' => Hash::make($request->password)
             ]);
         }
 
-        return redirect('usuario')->with('Mensaje', 'Trabajador actualizado correctamente.' );
+        return redirect('cliente')->with('Mensaje', 'Usuario actualizado correctamente.' );
     }
 
     /**
@@ -133,8 +131,8 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         //
-        Usuario::destroy($id);
+        UsuarioModel::destroy($id);
 
-        return redirect('usuario')->with('Mensaje', 'Trabajador eliminado correctamente.' );
+        return redirect('cliente')->with('Mensaje', 'Usuario eliminado correctamente.' );
     }
 }

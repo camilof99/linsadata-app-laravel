@@ -7,7 +7,6 @@
     <title>Document</title>
   
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/keyframes.css') }}">
 
 </head>

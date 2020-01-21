@@ -26,7 +26,7 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Usuarios <small>TRABAJADORES</small></h1>
+			  <h1 class="text-titles"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Usuarios <small>CLIENTES</small></h1>
 			</div>
 			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse voluptas reiciendis tempora voluptatum eius porro ipsa quae voluptates officiis sapiente sunt dolorem, velit quos a qui nobis sed, dignissimos possimus!</p>
 		</div>
@@ -34,18 +34,18 @@
 		<div class="container-fluid">
 			<ul class="breadcrumb breadcrumb-tabs">
 			  	<li>
-			  		<a href="{{ url('usuario/create') }}" class="btn btn-info">
-			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO TRABAJADOR
+			  		<a href="{{ url('cliente/create') }}" class="btn btn-info">
+			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO CLIENTE
 			  		</a>
 			  	</li>
 			  	<li>
-			  		<a href="{{ url('usuario') }}" class="btn btn-success">
-			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE TRABAJADORES
+			  		<a href="{{ url('cliente') }}" class="btn btn-success">
+			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CLIENTES
 			  		</a>
 			  	</li>
 			  	<li>
 			  		<a href="client-search.html" class="btn btn-primary">
-			  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR TRABAJADOR
+			  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR CLIENTES
 			  		</a>
 			  	</li>
 			</ul>
@@ -66,14 +66,14 @@
 		<div class="container-fluid">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO TRABAJADOR</h3>
+					<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO CLIENTE</h3>
 				</div>
 				<div class="panel-body">
-					<form action="{{ url('/usuario') }}" method="post">
+					<form action="{{ url('/cliente') }}" method="post">
 
                         {{ csrf_field() }} <!-- Llave de acceso -->
                     
-                        @include('include.form', ['Modo' => 'crear', 'Rol' => 'trabajador'])
+                        @include('include.form', ['Modo' => 'crear', 'Rol' => 'cliente'])
                     
                     </form>
 				</div>

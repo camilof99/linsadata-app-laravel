@@ -16,6 +16,7 @@ class LoginAuthController extends Controller
 
     public function showLoginForm(){
         return view('loginAuth');
+        
     }
     
     public function login(){

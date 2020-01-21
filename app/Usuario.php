@@ -2,25 +2,38 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
-use Illuminate\Support\Facades\DB;
 
 class Usuario extends Authenticatable
 {
     //
     use Notifiable;
 
-    /*public function loginAuth($datos){
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'DNI','nombre', 'email', 'password', 'telefono', 'direccion', 'role'
+    ];
 
-/*$users = DB::select('select * from usuarios where email = ?', [$datos['email']]);
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
 
-        if(empty($users)){
-            return false;
-        }else{
-            return true;
-        }/ return true;
-    }*/
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
