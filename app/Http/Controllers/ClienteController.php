@@ -21,11 +21,14 @@ class ClienteController extends Controller
     public function index()
     {
         //
-        $datos['usuarios'] = Usuario::paginate(5)
-            ->where('role', '=', '3')
-            ->where('estado', '=', '1');
+        $datos['usuarios'] = Usuario::where('role', '=', '3')
+                                    ->where('estado', '=', '1')
+                                    ->orderBy('role', 'asc')
+                                    ->paginate(5);
 
-        return view('cliente.index', $datos);
+        $contador = $this->count();
+
+        return view('cliente.index', $datos, $contador);
     }
 
     /**
@@ -36,7 +39,9 @@ class ClienteController extends Controller
     public function create()
     {
         //
-        return view('cliente.create');
+        $contador = $this->count();
+
+        return view('cliente.create', $contador);
     }
 
     /**
@@ -89,7 +94,9 @@ class ClienteController extends Controller
         //
         $usuarios = Usuario::findOrFail($id);
 
-        return view('cliente.edit', compact('usuarios'));
+        $contador = $this->count();
+
+        return view('cliente.edit', compact('usuarios'), $contador);
     }
 
     /**
@@ -134,5 +141,20 @@ class ClienteController extends Controller
         UsuarioModel::destroy($id);
 
         return redirect('cliente')->with('Mensaje', 'Usuario eliminado correctamente.' );
+    }
+
+    public function count(){
+        $contador['trabajadoresCant'] = Usuario::where('estado', '=', '1')
+                            ->where('role', '!=', '3')
+                            ->count();
+
+        $contador['clientesCant'] = Usuario::where('estado', '=', '1')
+                            ->where('role', '=', '3')
+                            ->count();      
+        
+        $contador['usuariosCant'] = Usuario::where('estado', '=', '1')
+                            ->count();
+
+        return $contador;
     }
 }

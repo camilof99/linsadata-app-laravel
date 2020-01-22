@@ -51,23 +51,23 @@
 			</ul>
 		</div>
 
-		@if (Session::has('Mensaje')){{
-			Session::get('Mensaje')
-		}}  
+		@if (Session::has('Mensaje'))
+			<div class="alert alert-success" role="alert">
+				{{ Session::get('Mensaje') }}
+			</div>
 		@endif
 		
-		<!-- Panel listado de administradores -->
+		<!-- Panel listado de clientes -->
 		<div class="container-fluid">
 			<div class="panel panel-success">
 				<div class="panel-heading" style="background: rgb(2, 120, 255);">
-					<h3 class="panel-title"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE TRABAJADORES</h3>
+					<h3 class="panel-title"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CLIENTES</h3>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
 						<table class="table table-hover text-center">
 							<thead>
 								<tr>
-									<th class="text-center">#</th>
 									<th class="text-center">DNI</th>
 									<th class="text-center">NOMBRE</th>
 									<th class="text-center">TELÉFONO</th>
@@ -79,7 +79,6 @@
 							<tbody>
                                 @foreach ($usuarios as $user)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $user->DNI }}</td>
                                         <td>{{ $user->nombre }}</td>
                                         <td>{{ $user->telefono }}</td>
@@ -102,21 +101,16 @@
                                 </tbody>
 						</table>
 					</div>
-					<nav class="text-center">
-						<ul class="pagination pagination-sm">
-							<li class="disabled"><a href="javascript:void(0)">«</a></li>
-							<li class="active"><a href="javascript:void(0)">1</a></li>
-							<li><a href="javascript:void(0)">2</a></li>
-							<li><a href="javascript:void(0)">3</a></li>
-							<li><a href="javascript:void(0)">4</a></li>
-							<li><a href="javascript:void(0)">5</a></li>
-							<li><a href="javascript:void(0)">»</a></li>
-						</ul>
-					</nav>
+
 				</div>
 			</div>
+
+			<!-- Paginador -->
+			<div style="display: flex; align-items: center; justify-content: center;">
+				{{ $usuarios->links() }}
+			</div>
+			
 		</div>
-		
 		
 	</section>
     

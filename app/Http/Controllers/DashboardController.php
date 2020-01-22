@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Usuario;
+
 class DashboardController extends Controller
 {
     /**
@@ -17,6 +19,24 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('dashboard');
+        $contador = $this->count();
+
+        return view('dashboard', $contador);
     }
+
+    public function count(){
+        $contador['trabajadoresCant'] = Usuario::where('estado', '=', '1')
+                            ->where('role', '!=', '3')
+                            ->count();
+
+        $contador['clientesCant'] = Usuario::where('estado', '=', '1')
+                            ->where('role', '=', '3')
+                            ->count();      
+        
+        $contador['usuariosCant'] = Usuario::where('estado', '=', '1')
+                            ->count();
+
+        return $contador;
+    }
+
 }

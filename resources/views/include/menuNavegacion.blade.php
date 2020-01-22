@@ -42,14 +42,30 @@
             </li>
             <li>
                 <a href="#!" class="btn-sideBar-SubMenu">
-                    <i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
+                    <i class="zmdi zmdi-account-add zmdi-hc-fw"></i> 
+                    Usuarios 
+                    @if ($usuariosCant != 0)
+                    &emsp;&emsp;&emsp;&nbsp;
+                    <span class="label label-info">{{ $usuariosCant }}</span>
+                    @endif 
+                    <i class="zmdi zmdi-caret-down pull-right"></i>
                 </a>
                 <ul class="list-unstyled full-box">
                     <li>
-                        <a href="{{ url('usuario') }}"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Trabajadores</a>
+                        <a href="{{ url('usuario') }}"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Trabajadores 
+                            @if ($trabajadoresCant != 0)
+                            &emsp;&emsp;&nbsp;&nbsp;
+                            <span class="label label-info">{{ $trabajadoresCant }}</span>
+                            @endif 
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ url('cliente') }}"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Clientes</a>
+                        <a href="{{ url('cliente') }}"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Clientes
+                            @if ($clientesCant != 0)
+                            &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+                            <span class="label label-info">{{ $clientesCant }}</span>
+                            @endif 
+                        </a>
                     </li>
                 </ul>
             </li>

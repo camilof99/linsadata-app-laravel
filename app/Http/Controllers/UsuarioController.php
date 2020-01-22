@@ -22,11 +22,14 @@ class UsuarioController extends Controller
     public function index()
     {
         //
-        $datos['usuarios'] = Usuario::paginate(5)
-            ->where('estado', '=', '1')
-            ->where('role', '!=', '3');
+        $datos['usuarios'] = Usuario::where('estado', '=', '1')
+                                    ->where('role', '!=', '3')
+                                    ->orderBy('role', 'asc')
+                                    ->paginate(2);
 
-        return view('usuario.index', $datos);
+        $contador = $this->count();
+
+        return view('usuario.index', $datos, $contador);
     }
 
     /**
@@ -37,7 +40,9 @@ class UsuarioController extends Controller
     public function create()
     {
         //
-        return view('usuario.create');
+        $contador = $this->count();
+
+        return view('usuario.create', $contador);
     }
 
     /**
@@ -51,7 +56,7 @@ class UsuarioController extends Controller
         //
 
         $datosUsuario = $this->validate(request(), [
-            'email' => 'email|required|string|unique:usuarios',
+            'email' => 'email|required|string|unique:usuario',
             'password' => 'required|string'
         ]);
    
@@ -90,7 +95,9 @@ class UsuarioController extends Controller
         //
         $usuarios = Usuario::findOrFail($id);
 
-        return view('usuario.edit', compact('usuarios'));
+        $contador = $this->count();
+
+        return view('usuario.edit', compact('usuarios'), $contador);
     }
 
     /**
@@ -136,5 +143,20 @@ class UsuarioController extends Controller
         Usuario::destroy($id);
 
         return redirect('usuario')->with('Mensaje', 'Trabajador eliminado correctamente.' );
+    }
+
+    public function count(){
+        $contador['trabajadoresCant'] = Usuario::where('estado', '=', '1')
+                            ->where('role', '!=', '3')
+                            ->count();
+
+        $contador['clientesCant'] = Usuario::where('estado', '=', '1')
+                            ->where('role', '=', '3')
+                            ->count();      
+        
+        $contador['usuariosCant'] = Usuario::where('estado', '=', '1')
+                            ->count();
+
+        return $contador;
     }
 }

@@ -26,9 +26,11 @@
             <div class="login-box">
               <img src="{{ asset('img/icon-login.png') }}" class="avatar" alt="Avatar Image">
               <h1>INICIAR SESIÓN</h1>
+
               @if (session()->has('flash'))
-              <div class="alert alert-info" style="margin-top: 10px;">{{ session('flash') }}</div>
+              <div class="alert alert-warning" style="margin-top: 10px;">{{ session('flash') }}</div>
               @endif
+              
               <form action="{{ route('login') }}" method="post" id="login_form">
 
                 {{csrf_field()}}
