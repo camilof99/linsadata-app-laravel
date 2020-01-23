@@ -14,6 +14,7 @@
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::resource('usuario', 'UsuarioController');
 Route::resource('cliente', 'ClienteController');
+Route::resource('insumo', 'InsumoController');
 Route::get( '/', 'LoginAuthController@showLoginForm');
 Route::post( 'login', 'LoginAuthController@login' )->name( 'login' );
 Route::post( 'logout', 'LoginAuthController@logout' )->name( 'logout' );
