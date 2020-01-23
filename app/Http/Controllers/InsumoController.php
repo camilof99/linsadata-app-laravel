@@ -15,11 +15,13 @@ class InsumoController extends Controller
 
     public function index(){
         $datos['insumos'] = Insumo::paginate(3);
-        return view('insumo.index',$datos);
+        $contador = (new UsuarioController)->count();
+        return view('insumo.index',$datos,$contador);
     }
 
     public function create(){
-        return view('insumo.create');
+        $contador = (new UsuarioController)->count();
+        return view('insumo.create',$contador);
     }
 
     public function store(Request $request){
@@ -44,7 +46,8 @@ class InsumoController extends Controller
 
     public function edit($id){
         $insumo = Insumo::findOrFail($id);
-        return view('insumo.edit',compact('insumo'));
+        $contador = (new UsuarioController)->count();
+        return view('insumo.edit',compact('insumo'),$contador);
     }
 
     public function update(Request $request, $id){
@@ -60,7 +63,7 @@ class InsumoController extends Controller
             $file->move('img/insumos',$filename);
             $insumos->foto = $filename;
         }else{
-            $insumos->foto='';
+            $insumos->foto= $insumos->foto;
         }
         $insumos->save();
         return redirect('insumo')->with('Mensaje','Actulización exitosa');
