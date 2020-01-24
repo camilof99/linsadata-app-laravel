@@ -9,7 +9,7 @@
 </head>
 <body>
 
-
+	@include('include.menuNavegacion')
 
 	<!-- Content page-->
 <section class="full-box dashboard-contentPage">
@@ -25,7 +25,7 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Informes <small>INFORMES</small></h1>
+			  <h1 class="text-titles"><i class="zmdi zmdi-file-text zmdi-hc-fw"></i> INFORMES</h1>
             </div>
 			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse voluptas reiciendis tempora voluptatum eius porro ipsa quae voluptates officiis sapiente sunt dolorem, velit quos a qui nobis sed, dignissimos possimus!</p>
 		</div>

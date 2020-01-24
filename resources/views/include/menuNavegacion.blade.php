@@ -71,12 +71,16 @@
             </li>
             
             <li>
-                <a href="">
+                <a href="{{ url('insumo') }}">
                     <i class="zmdi zmdi-case-download zmdi-hc-fw"></i> Insumos
+                    @if ($insumosCant != 0)
+                            &emsp;&emsp;&emsp;&nbsp;
+                            <span class="label label-info">{{ $insumosCant }}</span>
+                            @endif 
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ url('informe') }}">
                     <i class="zmdi zmdi-file-text zmdi-hc-fw"></i> Informes
                 </a>
             </li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Usuario;
+use App\Insumo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -156,6 +157,15 @@ class UsuarioController extends Controller
         
         $contador['usuariosCant'] = Usuario::where('estado', '=', '1')
                             ->count();
+
+        $contador['insumosCant'] = Insumo::where('estado', '=', '1')
+                            ->count();
+
+        $contador['insumosList'] = Insumo::all()->where('estado', '=', '1');
+
+        $contador['clienteList'] = Usuario::all()
+                                 ->where('role', '=', '3')
+                                 ->where('estado', '=', '1');
 
         return $contador;
     }

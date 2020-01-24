@@ -19,24 +19,9 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $contador = $this->count();
+        $contador = (new UsuarioController)->count();
 
         return view('dashboard', $contador);
-    }
-
-    public function count(){
-        $contador['trabajadoresCant'] = Usuario::where('estado', '=', '1')
-                            ->where('role', '!=', '3')
-                            ->count();
-
-        $contador['clientesCant'] = Usuario::where('estado', '=', '1')
-                            ->where('role', '=', '3')
-                            ->count();      
-        
-        $contador['usuariosCant'] = Usuario::where('estado', '=', '1')
-                            ->count();
-
-        return $contador;
     }
 
 }

@@ -8,7 +8,19 @@
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+
+<style>
+	textarea {	
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;	
+		width: 100%;
+	}
+</style>
+
 <body>
+
+	@include('include.menuNavegacion')
 	
 	<!-- Content page-->
 		<section class="full-box dashboard-contentPage">
@@ -24,7 +36,7 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Informes <small>INFORMES</small></h1>
+			  <h1 class="text-titles"><i class="zmdi zmdi-file-text zmdi-hc-fw"></i> INFORMES</h1>
 			</div>
 			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse voluptas reiciendis tempora voluptatum eius porro ipsa quae voluptates officiis sapiente sunt dolorem, velit quos a qui nobis sed, dignissimos possimus!</p>
 		</div>
@@ -76,55 +88,118 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <div class="form-group label-floating">
-                                              <label class="control-label">Nombre proceso realizado *</label>
-                                              <input class="form-control" type="text" name="DNI" required="" maxlength="30" value="{{ isset($usuarios->DNI) ? $usuarios->DNI : '' }}">
+                                        <div class="form-group">
+                                              <label style="color: #878787;">Nombre proceso realizado *</label>
+                                              <input class="form-control" type="text" name="descripcion" required="" maxlength="30" value="{{ isset($usuarios->DNI) ? $usuarios->DNI : '' }}">
                                         </div>
                                     </div>
                                                                 
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="form-group label-floating">
-                                                <label class="">Cliente *</label>
-                                                <select name="role" class="select-reg custom-select custom-select-sm">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                </select>
+                                                <label style="color: #878787;" class="">Cliente *</label>
+                                                <select name="cliente" class="select-reg custom-select custom-select-sm">
+													@foreach ($clienteList as $cliente)
+														<tr>
+															<option value="{{ $cliente->nombre }}">{{ $cliente->nombre }}</option>
+														</tr>
+													@endforeach
+
+												</select>
+																				
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="form-group label-floating">
-                                                  <label class="">Fecha *</label>
+                                                  <label style="color: #878787;" class="">Fecha *</label>
                                                   <input class="form-control" type="date" name="fecha" required="">
                                             </div>
                                         </div>
                                 
-                                </div>
-                            </div>
+                                </div> 
+							</div>
             
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-6">
-                                        <div class="form-group label-floating">
-                                              <label class="control-label">Objetivo general *</label><br>
-                                              <textarea class="form-control" required="" name="objetivo-gen" id="" cols="45" rows="5"></textarea>
+                                        <div class="form-group">
+                                              <label style="color: #878787;" class="">Objetivo general *</label><br>
+                                              <textarea class="" required="" name="objetivo_gen" id="" cols="45" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-6">
-                                        <div class="form-group label-floating">
-                                              <label class="control-label">Objetivos Especificos *</label><br>
-                                              <textarea class="form-control" required="" name="objetivo-esp" id="" cols="45" rows="5"></textarea>
+                                        <div class="form-group">
+                                              <label style="color: #878787;" class="">Objetivos Especificos *</label><br>
+                                              <textarea class="" required="" name="objetivo_esp" id="" cols="45" rows="5"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+							</div>
+							
+							<div class="col-xs-12 col-sm-6">
+								<div class="form-group">
+									<label style="color: #878787;" class="">Insumos utilizados *</label>
+									<select name="insumo" id="tema" class="select-reg custom-select custom-select-sm">
+										<option value=""></option>
+										@foreach ($insumosList as $insumo)
+											<tr>
+												<option value="{{ $insumo->descripcion }}">{{ $insumo->descripcion }}</option>
+											</tr>
+										@endforeach
+
+									</select>
+
+								</div>
+
+							</div>
+
+							<div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group">
+                                              <label style="color: #878787;" class="">Lista insumos *</label><br>
+                                              <textarea disabled class="" required="" name="list_insumos" id="eltexto" cols="45" rows="7"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+							</div>
+
+							<div class="container-fluid">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="form-group">
+										<label style="color: #878787;" class="">Procedimiento *</label><br>
+										<textarea class="" required="" name="procedimiento" id="" cols="100" rows="5"></textarea>
+									</div>
+								</div>
+							</div>
+
+							<div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group">
+                                              <label style="color: #878787;" class="">Conclusión *</label><br>
+                                              <textarea class="" required="" name="conclusion" id="" cols="45" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group">
+                                              <label style="color: #878787;" class="">Evidencia *</label><br>
+                                              
+                                        </div>
+									</div>
+									
+                                </div>
+							</div>
+
                         </fieldset>
                         <p class="text-center" style="margin-top: 20px;">
                             <button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Generar informe</button>
                         </p>
-                        
                     
-                    </form>
+					</form>
+				  
+
 				</div>
 			</div>
 		</div>
@@ -139,6 +214,7 @@
 	<script src="{{ asset('js/ripples.min.js') }}"></script>
 	<script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
+	<script src="{{ asset('js/functions.js') }}"></script>
 	<script>
 		$.material.init();
 	</script>

@@ -36,17 +36,17 @@
                 -webkit-transform: translate(0, -35%);
                 transform: translate(0, -35%);">
             <center><h2 style="margin-bottom: 5px;">INFORME TÉCNICO</h2></center>
-            <center><h2 style="margin-top: 0;">ENSAYO DE JARRAS AGUAS RESIDUALES NO DOMESTICAS</h2></center>
+            <center><h2 style="margin-top: 0;">{{ $plantilla->descripcion }}</h2></center>
         </div>
 
         <div class="div3"
             style="
                 margin-left: 60px;
                 margin-top: 20%;">
-            <h2 style="margin-bottom: 5px;">INDUSTRIA AMBIENTAL S.A.S</h2>
-            <p style="margin-top: 0;">Ingeniero Víctor De la Rosa <br>
+            <h2 style="margin-bottom: 5px;">{{ $plantilla->cliente }}</h2>
+            <p style="margin-top: 0;">
                 Cartagena de indias - Colombia <br>
-                Octubre 08 de 2018</p>
+                {{ $plantilla->fecha }}</p>
         </div>
 
         <div class="div4"
@@ -79,10 +79,7 @@
             style="
                 margin-left: 60px;
                 margin-right: 20px;">
-            <p>Determinar la concentración, dosis y tiempos óptimos para el proceso de
-               coagulación, floculación y sedimentación por medio del test de jarras a 
-               dos muestras de agua residual no domestica obtenida de la planta Industria 
-               ambiental S.A.S
+            <p>{{ $plantilla->objetivo_gen }}
             </p>
         </div>
 
@@ -96,11 +93,7 @@
             style="
                 margin-left: 85px;">
             <p>
-                • Determinar la concentración precisa para alcanzar la neutralización de la muestra.
-                <br>
-                • Identificar la dosis de coagulación.
-                <br>
-                • Analizar los tiempos de sedimentación
+                {{ $plantilla->objetivo_esp }}
             </p>
         </div>
 
@@ -134,11 +127,7 @@
             style="
                 margin-left: 85px;">
             <p>
-                • Insumo 1.
-                <br>
-                • Insumo 2.
-                <br>
-                • Insumo 3
+                {{ $plantilla->insumo }}
             </p>
         </div>
 
@@ -153,23 +142,7 @@
                 margin-left: 60px;
                 margin-right: 15px;">
             <p>
-                Para esta muestra inicialmente se realizó adecuación del valor de pH, ya 
-                que se encontraba muy por debajo de valor mínimo de trabajo optimo del 
-                coagulante, esto se hizo por medio de adición de hidróxido de sodio al 48% 
-                a razón de 0,25 ml por cada litro de muestra obteniendo un pH de 8,64. 
-                Para esta muestra inicialmente se realizó adecuación del valor de pH, ya 
-                que se encontraba muy por debajo de valor mínimo de trabajo optimo del 
-                coagulante, esto se hizo por medio de adición de hidróxido de sodio al 
-                48% a razón de 0,25 ml por cada litro de muestra obteniendo un pH de 8,64.
-                <br>
-                Para esta muestra inicialmente se realizó adecuación del valor de pH, ya 
-                que se encontraba muy por debajo de valor mínimo de trabajo optimo del 
-                coagulante, esto se hizo por medio de adición de hidróxido de sodio al 48% 
-                a razón de 0,25 ml por cada litro de muestra obteniendo un pH de 8,64. 
-                Para esta muestra inicialmente se realizó adecuación del valor de pH, ya 
-                que se encontraba muy por debajo de valor mínimo de trabajo optimo del 
-                coagulante, esto se hizo por medio de adición de hidróxido de sodio al 
-                48% a razón de 0,25 ml por cada litro de muestra obteniendo un pH de 8,64.
+                {{ $plantilla->procedimiento }}
             </p>
         </div>
 
@@ -254,11 +227,7 @@
                 margin-left: 60px;
                 margin-right: 15px;">
             <p>
-                Los valores de los parámetros fisicoquímicos logrados como dosis optimas 
-                despuésde realizar los ensayos de tratabilidad de las muestras obtenidas 
-                de la empresa INDUSTRIA AMBIENTAL S.A.S, demuestran al ser comparadas 
-                con la Resolución No.0631 de 17 de marzo de 2015 un cumplimiento con los
-                límites máximos permisibles.
+                {{ $plantilla->conclusion }}
             </p>
         </div>
 

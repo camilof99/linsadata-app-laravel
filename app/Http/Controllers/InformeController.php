@@ -13,10 +13,10 @@ class InformeController extends Controller
     public function index()
     {
         //
-        
-        //$contador = $this->count();
 
-        return view('informe.index');
+        $contador = (new UsuarioController)->count();
+
+        return view('informe.index', $contador);
     }
 
     /**
@@ -27,7 +27,9 @@ class InformeController extends Controller
     public function create()
     {
         //
-        return view('informe.create');
+        $contador = (new UsuarioController)->count();
+
+        return view('informe.create', $contador);
         
     }
 
@@ -40,9 +42,9 @@ class InformeController extends Controller
     public function store(Request $request)
     {
         //
-        return $request;
+        $datos['plantilla'] = $request;
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('/informe/plantilla');
+        $pdf->loadView('/informe/plantillaInforme', $datos);
         return $pdf->stream();
     }
 
