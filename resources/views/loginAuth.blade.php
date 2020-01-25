@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Linsadata</title>
   
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/keyframes.css') }}">
@@ -13,6 +13,9 @@
 <body>
     <div class="section_index">
         <div class="bg_trans">
+
+        @include('include.menuInfo')
+
           <div class="cont_sect_index">
             <div class="col-md-5 text">
               <h6>Personal altamente calificado</h6>
@@ -25,7 +28,7 @@
             </div>
             <div class="login-box">
               <img src="{{ asset('img/icon-login.png') }}" class="avatar" alt="Avatar Image">
-              <h1>INICIAR SESIÓN</h1>
+           
 
               @if (session()->has('flash'))
               <div class="alert alert-warning" style="margin-top: 10px;">{{ session('flash') }}</div>
@@ -36,8 +39,8 @@
                 {{csrf_field()}}
 
                 <div class="{{ $errors->has('email') ? 'has-error' : '' }}">
-                  <label for="email">Correo</label>
-                  <input type="email" name="email" id="email" placeholder="Ingresa Correo" value="{{ old('email') }}">
+               <label for="email"> </i>Correo</label>
+                <input type="email" name="email" id="email" placeholder="Ingresa Correo" value="{{ old('email') }}">
                   {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                 </div>
 
@@ -47,7 +50,7 @@
                   {!! $errors->first('password', '<span class="help-block">:message</span>') !!}  
                 </div>
 
-                <button type="submit" class="btn_login" value="Login">Aceptar</button>
+                <button type="submit" class="btn_login" value="Login">Iniciar Sesión</button>
             
             </form>
             </div>
@@ -57,5 +60,8 @@
         <script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/query-3.1.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+   
 </body>
 </html>
+
+
