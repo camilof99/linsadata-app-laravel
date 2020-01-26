@@ -30,7 +30,7 @@
            
 
               @if (session()->has('flash'))
-              <div class="alert alert-warning" style="margin-top: 10px;">{{ session('flash') }}</div>
+             <div class="alert alert-warning" style="margin-top: 60px;">{{ session('flash') }}</div>
               @endif
               
               <form action="{{ route('login') }}" method="post" id="login_form">
