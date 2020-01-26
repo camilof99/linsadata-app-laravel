@@ -34,19 +34,16 @@
 
 		<div class="container-fluid">
 			<ul class="breadcrumb breadcrumb-tabs">
+				@if (auth()->user()->role == 1)
 			  	<li>
 			  		<a href="{{ url('cliente/create') }}" class="btn btn-info">
 			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO CLIENTE
 			  		</a>
-			  	</li>
+				</li>
+				@endif
 			  	<li>
 			  		<a href="{{ url('cliente') }}" class="btn btn-success">
 			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CLIENTES
-			  		</a>
-			  	</li>
-			  	<li>
-			  		<a href="" class="btn btn-primary">
-			  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR CLIENTES
 			  		</a>
 			  	</li>
 			</ul>
@@ -74,8 +71,10 @@
 									<th class="text-center">NOMBRE</th>
 									<th class="text-center">TELÉFONO</th>
 									<th class="text-center">DIRECCIÓN</th>
-                                    <th class="text-center">CORREO</th>
-                                    <th class="text-center">OPCIONES</th>
+									<th class="text-center">CORREO</th>
+									@if (auth()->user()->role == 1)
+									<th class="text-center">OPCIONES</th>
+									@endif
 								</tr>
 							</thead>
 							<tbody>
@@ -87,10 +86,10 @@
 										<td>{{ $user->direccion }}</td>
 										<td>{{ $user->email }}</td>
                                         <td>
+											@if (auth()->user()->role == 1)
                                             <a href="{{ url('/cliente/'.$user->id).'/edit' }}" class="btn btn-success btn-raised btn-xs" style="background: rgb(2, 120, 255);">
                                                 <i class="zmdi zmdi-edit"></i> Editar
                                             </a>
-											@if (auth()->user()->role == 1)
                                             <form class="form-list" action="{{ url('/cliente/'.$user->id) }}" method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
