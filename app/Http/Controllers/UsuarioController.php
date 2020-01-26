@@ -161,14 +161,31 @@ class UsuarioController extends Controller
         $contador['insumosCant'] = Insumo::where('estado', '=', '1')
                             ->count();
 
-        $contador['insumosList'] = Insumo::all()->where('estado', '=', '1');
-
-        $contador['clienteList'] = Usuario::all()
-                                 ->where('role', '=', '3')
-                                 ->where('estado', '=', '1');
-
         $contador['informesCant'] = Informe::where('estado', '=', '1')
                             ->count();
+
+        $contador['insumosList'] = Insumo::where('estado', '=', '1')
+                                        ->orderBy('created_at', 'desc')
+                                        ->get();
+
+        $contador['clienteList'] = Usuario::where('role', '=', '3')
+                                 ->where('estado', '=', '1')
+                                 ->orderBy('created_at', 'desc')
+                                 ->get();
+
+        $contador['trabajadoresList'] = Usuario::select('usuario.id', 'usuario.DNI', 'usuario.nombre',
+                                'usuario.telefono', 'usuario.direccion', 'usuario.email',
+                                'usuario.created_at','role.rol')
+                                    ->join('role', 'usuario.role', '=', 'role.id_role')
+                                    ->where('estado', '=', '1')
+                                    ->where('role', '!=', '3')
+                                    ->orderBy('usuario.created_at', 'desc')
+                                    ->get();
+        
+        $contador['informesList'] = Informe::where('estado', '=', '1')
+                                 ->orderBy('created_at', 'desc')
+                                 ->get();
+                                 
 
         return $contador;
     }

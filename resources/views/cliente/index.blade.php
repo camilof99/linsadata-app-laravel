@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Linsadata</title>
+    <title>LINSADATA</title>
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logo-mini.png') }}" />
+	
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
@@ -88,13 +90,14 @@
                                             <a href="{{ url('/cliente/'.$user->id).'/edit' }}" class="btn btn-success btn-raised btn-xs" style="background: rgb(2, 120, 255);">
                                                 <i class="zmdi zmdi-edit"></i> Editar
                                             </a>
-                            
+											@if (auth()->user()->role == 1)
                                             <form class="form-list" action="{{ url('/cliente/'.$user->id) }}" method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
                                                 <button  class="eliminar-btn btn btn-danger btn-raised btn-xs" type="submit" onclick="return confirm('¿Borrar?')";>
                                                     <i class="zmdi zmdi-delete"></i> Eliminar</button>
-                                            </form>
+											</form>
+											@endif
                                         </td>
                                     </tr>
                                 @endforeach

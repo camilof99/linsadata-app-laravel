@@ -12,7 +12,6 @@
 				{{ csrf_field() }} <!-- Llave de acceso -->
 			
 				@include('insumo.form' ,['Modo' => 'crear'])
-				<!--@//include('insumo.form', array('file'=> true) ,['Modo' => 'crear'])-->
 			</form>
 		</div>
 	</div>

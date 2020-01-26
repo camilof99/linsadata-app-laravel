@@ -28,13 +28,15 @@
 								<td>
 									<a href="{{ url('/insumo/'.$insumo->id).'/edit' }}" class="btn btn-success btn-raised btn-xs" style="background: rgb(2, 120, 255);">
 										<i class="zmdi zmdi-edit"></i> Editar
-									</a>                
+									</a>
+									@if (auth()->user()->role == 1)
 									<form class="form-list" action="{{ url('/insumo/'.$insumo->id) }}" method="post">
 										{{ csrf_field() }}
 										{{ method_field('DELETE') }}
 										<button  class="eliminar-btn btn btn-danger btn-raised btn-xs" type="submit" onclick="return confirm('¿Borrar?')";>
 										<i class="zmdi zmdi-delete"></i> Eliminar</button>
 									</form>
+									@endif
 								</td>
 							</tr>
 						@endforeach
