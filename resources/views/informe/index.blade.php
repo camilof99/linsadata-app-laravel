@@ -32,19 +32,16 @@
 
 		<div class="container-fluid">
 			<ul class="breadcrumb breadcrumb-tabs">
+				@if (auth()->user()->role == 2)
 			  	<li>
 			  		<a href="{{ url('informe/create') }}" class="btn btn-info">
 			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO INFORME
 			  		</a>
-			  	</li>
+				</li>
+				@endif
 			  	<li>
 			  		<a href="{{ url('informe') }}" class="btn btn-success">
 			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE INFORMES
-			  		</a>
-			  	</li>
-			  	<li>
-			  		<a href="" class="btn btn-primary">
-			  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR INFORME
 			  		</a>
 			  	</li>
 			</ul>
