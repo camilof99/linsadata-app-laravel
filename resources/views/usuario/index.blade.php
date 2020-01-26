@@ -43,11 +43,6 @@
 			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE TRABAJADORES
 			  		</a>
 			  	</li>
-			  	<li>
-			  		<a href="" class="btn btn-primary">
-			  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR TRABAJADOR
-			  		</a>
-			  	</li>
 			</ul>
 		</div>
 
