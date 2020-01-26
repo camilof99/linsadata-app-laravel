@@ -30,10 +30,13 @@
                 <div class="col-xs-12 col-sm-6">
                     <div class="form-group label-floating">
                         <label class="control-label">Cargo/Ocupación *</label>
+                        <div class="caja">
                         <select name="role" class="select-reg custom-select custom-select-sm">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            <option value=""></option>
+                            <option value="1">Gerente</option>
+                            <option value="2">Técnico</option>
                         </select>
+                        </div>
                     </div>
                 </div>
             @endif

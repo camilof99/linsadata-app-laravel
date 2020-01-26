@@ -127,7 +127,7 @@
             style="
                 margin-left: 85px;">
             <p>
-                {{ $plantilla->insumo }}
+                {{ $plantilla->list_insumos }}
             </p>
         </div>
 
@@ -178,10 +178,10 @@
             <h4>ANTES</h4>
             <img 
                 style="
-                    width: 95%; 
-                    height: 95%;
+                    width: 90%; 
+                    height: 90%;
                     margin-top: 10px;"
-                src="{{ asset('img/bg.jpg') }}">
+                src="{{ $plantilla->foto1 }}">
         </div>
 
         <div class="div17"
@@ -190,10 +190,10 @@
             <h4>DESPUÉS</h4>
             <img 
                 style="
-                    width: 95%; 
-                    height: 95%;
+                    width: 90%; 
+                    height: 90%;
                     margin-top: 10px;"
-                src="{{ asset('img/bg.jpg') }}">
+                src="{{ $plantilla->foto2 }}">
         </div>
 
         <div class="div18"

@@ -18,18 +18,7 @@
                 <li>
                     <form id="formularioaenviar" method="post" action="{{ route('logout') }}">
                         {{ csrf_field() }}
-                        <button type="submit"><i class="zmdi zmdi-power zmdi-hc-lg zmdi-hc-fw"></i></button>
-                    </form>
-                </li>
-                <li>
-                    <a href="{{ route('logout') }}" method="post">
-                        <i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Salir
-                    </a>
-                </li>
-                <li>
-                    <form id="formularioaenviar" method="post" action="{{ route('logout') }}">
-                        {{ csrf_field() }}
-                        <button type="submit" class="btn-exit-system"><i class="zmdi zmdi-power zmdi-hc-lg zmdi-hc-fw"></i></button>
+                        <button type="submit" class="btn-exit-system"><i class="zmdi zmdi-power zmdi-hc-lg zmdi-hc-fw"></i> Cerrar sesión</button>
                     </form>
                 </li>
             </ul>

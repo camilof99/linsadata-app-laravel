@@ -85,7 +85,7 @@
                                         <td>{{ $user->telefono }}</td>
 										<td>{{ $user->direccion }}</td>
 										<td>{{ $user->email }}</td>
-                                        <td>{{ $user->role }}</td>
+                                        <td>{{ $user->rol }}</td>
                                         <td>
                                             <a href="{{ url('/usuario/'.$user->id).'/edit' }}" class="btn btn-success btn-raised btn-xs" style="background: rgb(2, 120, 255);">
                                                 <i class="zmdi zmdi-edit"></i> Editar

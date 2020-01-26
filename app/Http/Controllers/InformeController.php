@@ -46,10 +46,30 @@ class InformeController extends Controller
     public function store(Request $request)
     {
         //
+        $value = $request['cliente'];
+        $exploded_value = explode('|', $value);
+        $cliente_nombre = $exploded_value[0];
+        $cliente_id = $exploded_value[1];
+
+        $request['cliente'] = $cliente_nombre;
+
+        $ruta = "informes/";
+        $nombre ='informe'."-".$request['fecha']."-".$cliente_nombre.".pdf";
         $datos['plantilla'] = $request;
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('/informe/plantillaInforme', $datos);
-        return $pdf->stream();
+
+        $output = $pdf->output();
+
+        file_put_contents( $ruta.$nombre, $output);
+        
+        Informe::create([
+            'descripcion'=> $nombre,
+            'id_usuario' => auth()->user()->id,
+            'id_cliente' => $cliente_id
+        ]);
+
+        return redirect('informe')->with('Mensaje', 'Informe generado correctamente.' );
     }
 
     /**

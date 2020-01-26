@@ -79,7 +79,7 @@
 					<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO INFORME</h3>
 				</div>
 				<div class="panel-body">
-					<form action="{{ url('/informe') }}" method="post">
+					<form action="{{ url('/informe') }}" method="post" enctype="multipart/form-data">
 
                         {{ csrf_field() }} <!-- Llave de acceso -->
                     
@@ -100,7 +100,7 @@
                                                 <select name="cliente" class="select-reg custom-select custom-select-sm">
 													@foreach ($clienteList as $cliente)
 														<tr>
-															<option value="{{ $cliente->nombre }}">{{ $cliente->nombre }}</option>
+															<option value="{{ $cliente->nombre }}|{{ $cliente->id }}">{{ $cliente->nombre }}</option>
 														</tr>
 													@endforeach
 
@@ -158,7 +158,7 @@
                                     <div class="col-xs-12 col-sm-6">
                                         <div class="form-group">
                                               <label style="color: #878787;" class="">Lista insumos *</label><br>
-                                              <textarea disabled class="" required="" name="list_insumos" id="eltexto" cols="45" rows="7"></textarea>
+                                              <textarea class="" required="" name="list_insumos" id="eltexto" cols="45" rows="7"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -182,15 +182,35 @@
                                               <textarea class="" required="" name="conclusion" id="" cols="45" rows="5"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-group">
-                                              <label style="color: #878787;" class="">Evidencia *</label><br>
-                                              
-                                        </div>
-									</div>
 									
                                 </div>
 							</div>
+							<br>
+
+							<div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="">
+											<div class="img_inf">
+												<label style="color: #878787;" class="">Antes</label><br>
+												<input name="foto1" type="file" id="foto1" accept="image/*"><br>
+												<img class="img1" id="imagenPrevisualizacion">
+										  </div>
+                                        </div>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+                                        <div class="">
+											<div class="img_inf">
+												<label style="color: #878787;" class="">Antes</label><br>
+												<input name="foto2" type="file" id="foto2" accept="image/*"><br>
+												<img class="img1" id="imagenPrevisualizacion2">
+										  </div>
+                                        </div>
+                                    </div>
+                                </div>
+							</div>
+							
+							<br>
 
                         </fieldset>
                         <p class="text-center" style="margin-top: 20px;">

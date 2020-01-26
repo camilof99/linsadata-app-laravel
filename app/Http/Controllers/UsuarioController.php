@@ -23,7 +23,11 @@ class UsuarioController extends Controller
     public function index()
     {
         //
-        $datos['usuarios'] = Usuario::where('estado', '=', '1')
+        $datos['usuarios'] = Usuario::select('usuario.id', 'usuario.DNI', 'usuario.nombre',
+                                'usuario.telefono', 'usuario.direccion', 'usuario.email',
+                                'role.rol')
+                        ->join('role', 'usuario.role', '=', 'role.id_role')
+                        ->where('estado', '=', '1')
                                     ->where('role', '!=', '3')
                                     ->orderBy('role', 'asc')
                                     ->paginate(2);
