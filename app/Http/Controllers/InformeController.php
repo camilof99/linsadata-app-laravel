@@ -76,7 +76,7 @@ class InformeController extends Controller
             'estado' => 0
         ]);
 
-        return redirect('informe')->with('Mensaje', 'Usuario eliminado correctamente.' );
+        return redirect('informe')->with('Mensaje', 'Informe eliminado correctamente.' );
         
     }
 
