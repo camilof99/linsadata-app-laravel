@@ -51,11 +51,12 @@
 			</ul>
 		</div>
 
-		@if (Session::has('Mensaje'))
-			<div class="alert alert-success" role="alert">
-				{{ Session::get('Mensaje') }}
-			</div>
-		@endif
+		@if (Session::has('Mensaje')) 
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>{{Session::get('Mensaje')}}</strong>
+            </div> 
+        @endif
 		
 		<!-- Panel listado de clientes -->
 		<div class="container-fluid">

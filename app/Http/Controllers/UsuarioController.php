@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Informe;
 use App\Usuario;
 use App\Insumo;
 use Illuminate\Http\Request;
@@ -26,8 +27,8 @@ class UsuarioController extends Controller
         $datos['usuarios'] = Usuario::select('usuario.id', 'usuario.DNI', 'usuario.nombre',
                                 'usuario.telefono', 'usuario.direccion', 'usuario.email',
                                 'role.rol')
-                        ->join('role', 'usuario.role', '=', 'role.id_role')
-                        ->where('estado', '=', '1')
+                                    ->join('role', 'usuario.role', '=', 'role.id_role')
+                                    ->where('estado', '=', '1')
                                     ->where('role', '!=', '3')
                                     ->orderBy('role', 'asc')
                                     ->paginate(2);
@@ -145,7 +146,9 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         //
-        Usuario::destroy($id);
+        Usuario::where('id', '=', $id)->update([
+            'estado' => 0
+        ]);
 
         return redirect('usuario')->with('Mensaje', 'Trabajador eliminado correctamente.' );
     }
@@ -170,6 +173,9 @@ class UsuarioController extends Controller
         $contador['clienteList'] = Usuario::all()
                                  ->where('role', '=', '3')
                                  ->where('estado', '=', '1');
+
+        $contador['informesCant'] = Informe::where('estado', '=', '1')
+                            ->count();
 
         return $contador;
     }

@@ -7,7 +7,7 @@ var textarea = document.querySelector('#eltexto');
 select.addEventListener('change', function() {
   // concateno al textarea el valor seleccionado y le agrego
   // un salto de línea
-  textarea.value += this.value + '\r\n';
+  textarea.value += this.value + ', ' + '\n';
 });
 
 const $seleccionArchivos = document.querySelector("#foto1"),

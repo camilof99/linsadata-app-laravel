@@ -139,7 +139,9 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         //
-        Usuario::destroy($id);
+        Usuario::destroy($id);Usuario::where('id', '=', $id)->update([
+            'estado' => 0
+        ]);
 
         return redirect('cliente')->with('Mensaje', 'Usuario eliminado correctamente.' );
     }

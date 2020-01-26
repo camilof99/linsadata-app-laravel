@@ -125,7 +125,7 @@
 
         <div class="div11"
             style="
-                margin-left: 85px;">
+                margin-left: 60px;">
             <p>
                 {{ $plantilla->list_insumos }}
             </p>

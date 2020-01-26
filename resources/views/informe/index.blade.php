@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Linsadata</title>
+    <title>LINSADATA</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
@@ -27,7 +27,6 @@
 			<div class="page-header">
 			  <h1 class="text-titles"><i class="zmdi zmdi-file-text zmdi-hc-fw"></i> INFORMES</h1>
             </div>
-			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse voluptas reiciendis tempora voluptatum eius porro ipsa quae voluptates officiis sapiente sunt dolorem, velit quos a qui nobis sed, dignissimos possimus!</p>
 		</div>
 
 		<div class="container-fluid">
@@ -50,10 +49,11 @@
 			</ul>
 		</div>
 
-		@if (Session::has('Mensaje'))
-			<div class="alert alert-success" role="alert">
-				{{ Session::get('Mensaje') }}
-			</div>
+		@if (Session::has('Mensaje')) 
+		<div class="alert alert-success alert-block">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			<strong>{{Session::get('Mensaje')}}</strong>
+		</div> 
 		@endif
 		
 		<!-- Panel listado de trabajadores -->
@@ -64,31 +64,50 @@
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
-						<!--<table class="table table-hover text-center">
+						<table class="table table-hover text-center">
 							<thead>
 								<tr>
-									<th class="text-center">DNI</th>
-									<th class="text-center">NOMBRE</th>
-									<th class="text-center">TELÉFONO</th>
-									<th class="text-center">DIRECCIÓN</th>
-                                    <th class="text-center">CORREO</th>
-                                    <th class="text-center">ROL</th>
+									<th class="text-center">ID</th>
+									<th class="text-center">DESCRIPCIÓN</th>
+									<th class="text-center">TÉCNICO</th>
+									<th class="text-center">CLIENTE</th>
+                                    <th class="text-center">CREACIÓN</th>
                                     <th class="text-center">OPCIONES</th>
 								</tr>
 							</thead>
 							<tbody>
-                                
+                                @foreach ($informes as $informe)
+                                    <tr>
+                                        <td>{{ $informe->id }}</td>
+                                        <td>{{ $informe->descripcion }}</td>
+                                        <td>{{ $informe->usuario }}</td>
+										<td>{{ $informe->cliente }}</td>
+										<td>{{ $informe->created_at }}</td>
+                                        <td>
+                                            <a target="_blank" href="{{ asset('informes/'.$informe->descripcion) }}" class="btn btn-success btn-raised btn-xs" style="background: rgb(2, 120, 255);">
+                                                <i class="zmdi zmdi-eye"></i> Ver PDF
+                                            </a>
+                            
+                                            <form class="form-list" action="{{ url('/informe/'.$informe->id) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button  class="eliminar-btn btn btn-danger btn-raised btn-xs" type="submit" onclick="return confirm('¿Borrar?')";>
+                                                    <i class="zmdi zmdi-delete"></i> Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
-						</table>-->
+						</table>
 
 					</div>
 				</div>
 			</div>
 
-			<!-- Paginador --
+			<!-- Paginador -->
 			<div style="display: flex; align-items: center; justify-content: center;">
-				
-			</div>-->
+				{{ $informes->links() }}
+			</div>
 
 		</div>
 	</section>

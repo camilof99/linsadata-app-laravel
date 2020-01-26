@@ -14,7 +14,12 @@ class InsumoController extends Controller
     }
 
     public function index(){
-        $datos['insumos'] = Insumo::paginate(3);
+        $datos['insumos'] = Insumo::select('insumos.id','insumos.descripcion', 'insumos.cantidad', 
+                            'insumos.foto', 'usuario.nombre')
+                        ->join('usuario', 'usuario.id', '=', 'insumos.id_usuario')
+                        ->where('insumos.estado', '=', '1')
+                        ->paginate(3);
+
         $contador = (new UsuarioController)->count();
         return view('insumo.index',$datos,$contador);
     }
@@ -29,6 +34,7 @@ class InsumoController extends Controller
 
         $insumos->descripcion = $request->input('descripcion');
         $insumos->cantidad = $request->input('cantidad');
+        $insumos->id_usuario = auth()->user()->id;
 
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -70,7 +76,11 @@ class InsumoController extends Controller
     }
 
     public function destroy($id){
-        Insumo::destroy($id);
+
+        Insumo::where('id', '=', $id)->update([
+            'estado' => 0
+        ]);
+
         return redirect('insumo')->with('Mensaje','Insumo eliminado');
     }
 }

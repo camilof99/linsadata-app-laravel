@@ -14,6 +14,7 @@
 							<th class="text-center">DESCRIPCIÓN</th>
 								<th class="text-center">CANTIDAD</th>
 								<th class="text-center">FOTOGRAFÍA</th>
+								<th class="text-center">TÉCNICO</th>
 								<th class="text-center">OPCIONES</th>
 							</tr>
 					</thead>
@@ -23,6 +24,7 @@
 								<td>{{ $insumo->descripcion }}</td>
 								<td>{{ $insumo->cantidad }}</td>
 								<td><img src="{{ asset('img/insumos/'. $insumo->foto) }}" width="100px;" height="70px;" alt="image"></td>
+								<td>{{ $insumo->nombre }}</td>
 								<td>
 									<a href="{{ url('/insumo/'.$insumo->id).'/edit' }}" class="btn btn-success btn-raised btn-xs" style="background: rgb(2, 120, 255);">
 										<i class="zmdi zmdi-edit"></i> Editar

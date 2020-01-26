@@ -72,6 +72,10 @@
             <li>
                 <a href="{{ url('informe') }}">
                     <i class="zmdi zmdi-file-text zmdi-hc-fw"></i> Informes
+                    @if ($informesCant != 0)
+                            &emsp;&emsp;&emsp;&nbsp;
+                            <span class="label label-info">{{ $informesCant }}</span>
+                            @endif 
                 </a>
             </li>
         </ul>

@@ -38,7 +38,6 @@
 			<div class="page-header">
 			  <h1 class="text-titles"><i class="zmdi zmdi-file-text zmdi-hc-fw"></i> INFORMES</h1>
 			</div>
-			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse voluptas reiciendis tempora voluptatum eius porro ipsa quae voluptates officiis sapiente sunt dolorem, velit quos a qui nobis sed, dignissimos possimus!</p>
 		</div>
 
 		<div class="container-fluid">
@@ -96,16 +95,16 @@
                                                                 
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="form-group label-floating">
-                                                <label style="color: #878787;" class="">Cliente *</label>
+												<label style="color: #878787;" class="">Cliente *</label>
+												<div class="caja">
                                                 <select name="cliente" class="select-reg custom-select custom-select-sm">
+														<option value=""></option>
 													@foreach ($clienteList as $cliente)
-														<tr>
 															<option value="{{ $cliente->nombre }}|{{ $cliente->id }}">{{ $cliente->nombre }}</option>
-														</tr>
 													@endforeach
 
 												</select>
-																				
+												</div>
                                             </div>
                                         </div>
 
@@ -139,16 +138,17 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
 									<label style="color: #878787;" class="">Insumos utilizados *</label>
-									<select name="insumo" id="tema" class="select-reg custom-select custom-select-sm">
+									
+									<div class="caja">
+										<select name="insumo" id="tema" class="select-reg custom-select custom-select-sm">
+										
 										<option value=""></option>
 										@foreach ($insumosList as $insumo)
-											<tr>
 												<option value="{{ $insumo->descripcion }}">{{ $insumo->descripcion }}</option>
-											</tr>
 										@endforeach
 
 									</select>
-
+									</div>
 								</div>
 
 							</div>

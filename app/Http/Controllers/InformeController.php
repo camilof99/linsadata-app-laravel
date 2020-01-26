@@ -17,10 +17,17 @@ class InformeController extends Controller
     public function index()
     {
         //
+        $datos['informes'] = Informe::select('informes.id', 'informes.descripcion', 
+                                'u.nombre as usuario', 'c.nombre as cliente',
+                                 'informes.created_at')
+                            ->join('usuario as u', 'u.id', '=', 'informes.id_usuario')
+                            ->join('usuario as c', 'c.id', '=', 'informes.id_cliente')
+                            ->where('informes.estado', '=', '1')
+                            ->paginate(2);
 
         $contador = (new UsuarioController)->count();
 
-        return view('informe.index', $contador);
+        return view('informe.index', $contador, $datos);
     }
 
     /**
@@ -115,6 +122,12 @@ class InformeController extends Controller
     public function destroy($id)
     {
         //
+
+        Informe::where('id', '=', $id)->update([
+            'estado' => 0
+        ]);
+
+        return redirect('informe')->with('Mensaje', 'Usuario eliminado correctamente.' );
         
     }
 
