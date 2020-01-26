@@ -43,11 +43,6 @@
 			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CLIENTES
 			  		</a>
 			  	</li>
-			  	<li>
-			  		<a href="client-search.html" class="btn btn-primary">
-			  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR CLIENTE
-			  		</a>
-			  	</li>
 			</ul>
 		</div>
 
