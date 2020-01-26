@@ -33,19 +33,16 @@
 
         <div class="container-fluid">
             <ul class="breadcrumb breadcrumb-tabs">
+                @if (auth()->user()->role == 2)
                 <li>
                     <a href="{{ url('insumo/create') }}" class="btn btn-info">
                         <i class="zmdi zmdi-plus"></i> &nbsp; NUEVO INSUMO
                     </a>
                 </li>
+                @endif
                 <li>
                     <a href="{{ url('insumo') }}" class="btn btn-success">
                         <i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE INSUMOS
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="btn btn-primary">
-                        <i class="zmdi zmdi-search"></i> &nbsp; BUSCAR INSUMO
                     </a>
                 </li>
             </ul>

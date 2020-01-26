@@ -15,7 +15,9 @@
 								<th class="text-center">CANTIDAD</th>
 								<th class="text-center">FOTOGRAFÍA</th>
 								<th class="text-center">TÉCNICO</th>
+								@if (auth()->user()->role == 2)
 								<th class="text-center">OPCIONES</th>
+								@endif
 							</tr>
 					</thead>
 					<tbody>
@@ -26,10 +28,10 @@
 								<td><img src="{{ asset('img/insumos/'. $insumo->foto) }}" width="100px;" height="70px;" alt="image"></td>
 								<td>{{ $insumo->nombre }}</td>
 								<td>
+									@if (auth()->user()->role == 2)
 									<a href="{{ url('/insumo/'.$insumo->id).'/edit' }}" class="btn btn-success btn-raised btn-xs" style="background: rgb(2, 120, 255);">
 										<i class="zmdi zmdi-edit"></i> Editar
 									</a>
-									@if (auth()->user()->role == 1)
 									<form class="form-list" action="{{ url('/insumo/'.$insumo->id) }}" method="post">
 										{{ csrf_field() }}
 										{{ method_field('DELETE') }}
