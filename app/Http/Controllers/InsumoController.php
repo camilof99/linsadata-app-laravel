@@ -14,6 +14,10 @@ class InsumoController extends Controller
     }
 
     public function index(){
+        if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
+
         $datos['insumos'] = Insumo::select('insumos.id','insumos.descripcion', 'insumos.cantidad', 
                             'insumos.foto', 'usuario.nombre')
                         ->join('usuario', 'usuario.id', '=', 'insumos.id_usuario')
@@ -25,11 +29,20 @@ class InsumoController extends Controller
     }
 
     public function create(){
+        if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
+        
         $contador = (new UsuarioController)->count();
         return view('insumo.create',$contador);
     }
 
     public function store(Request $request){
+
+        if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
+
         $insumos = new Insumo;
 
         $insumos->descripcion = $request->input('descripcion');
@@ -51,12 +64,20 @@ class InsumoController extends Controller
     }
 
     public function edit($id){
+        if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
+
         $insumo = Insumo::findOrFail($id);
         $contador = (new UsuarioController)->count();
         return view('insumo.edit',compact('insumo'),$contador);
     }
 
     public function update(Request $request, $id){
+        if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
+
         $insumos = Insumo::findOrFail($id);
 
         $insumos->descripcion = $request->input('descripcion');
@@ -76,6 +97,10 @@ class InsumoController extends Controller
     }
 
     public function destroy($id){
+
+        if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
 
         Insumo::where('id', '=', $id)->update([
             'estado' => 0

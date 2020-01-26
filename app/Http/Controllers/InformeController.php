@@ -30,11 +30,6 @@ class InformeController extends Controller
         return view('informe.index', $contador, $datos);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
@@ -44,12 +39,6 @@ class InformeController extends Controller
         
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
@@ -79,46 +68,6 @@ class InformeController extends Controller
         return redirect('informe')->with('Mensaje', 'Informe generado correctamente.' );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Informe  $informe
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Informe $informe)
-    {
-        //
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Informe $informe
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Informe $informe
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Informe $informe
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

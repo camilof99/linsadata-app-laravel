@@ -9,7 +9,7 @@
         </div>
         <br>
         <!-- SideBar User info -->
-        <div class="full-box dashboard-sideBar-UserInfo">
+        <div class="full-box dashboard-sideBar-UserInfo" style="margin-bottom: 10px;">
             <figure class="full-box">
                 <img src="{{ url('assets/avatars/AdminMaleAvatar.png') }}" alt="UserIcon">
                 <figcaption class="text-center text-titles">{{ auth()->user()->nombre }}</figcaption>
@@ -25,22 +25,36 @@
         </div>
         <!-- SideBar Menu -->
         <ul class="list-unstyled full-box dashboard-sideBar-Menu">
+            @if (auth()->user()->role == 1)
             <li>
                 <a href="{{ url('dashboard') }}">
                     <i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Dashboard
                 </a>
             </li>
+            @endif
+            
+            @if (auth()->user()->role == 1 || auth()->user()->role ==2)
             <li>
                 <a href="#!" class="btn-sideBar-SubMenu">
                     <i class="zmdi zmdi-account-add zmdi-hc-fw"></i> 
                     Usuarios 
-                    @if ($usuariosCant != 0)
-                    &emsp;&emsp;&emsp;&nbsp;
-                    <span class="label label-info">{{ $usuariosCant }}</span>
-                    @endif 
+
+                    @if (auth()->user()->role == 1)
+                        @if ($usuariosCant != 0)
+                        &emsp;&emsp;&emsp;&nbsp;
+                        <span class="label label-info">{{ $usuariosCant }}</span>
+                        @endif 
+                    @else
+                        @if ($clientesCant != 0)
+                        &emsp;&emsp;&emsp;&nbsp;
+                        <span class="label label-info">{{ $clientesCant }}</span>
+                        @endif 
+                    @endif
+                    
                     <i class="zmdi zmdi-caret-down pull-right"></i>
                 </a>
                 <ul class="list-unstyled full-box">
+                    @if (auth()->user()->role == 1)
                     <li>
                         <a href="{{ url('usuario') }}"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Trabajadores 
                             @if ($trabajadoresCant != 0)
@@ -49,6 +63,8 @@
                             @endif 
                         </a>
                     </li>
+                    @endif
+
                     <li>
                         <a href="{{ url('cliente') }}"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Clientes
                             @if ($clientesCant != 0)
@@ -59,7 +75,9 @@
                     </li>
                 </ul>
             </li>
-            
+            @endif
+
+            @if (auth()->user()->role == 1 || auth()->user()->role ==2)
             <li>
                 <a href="{{ url('insumo') }}">
                     <i class="zmdi zmdi-case-download zmdi-hc-fw"></i> Insumos
@@ -69,6 +87,8 @@
                             @endif 
                 </a>
             </li>
+            @endif
+
             <li>
                 <a href="{{ url('informe') }}">
                     <i class="zmdi zmdi-file-text zmdi-hc-fw"></i> Informes

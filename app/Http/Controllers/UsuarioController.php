@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function __construct()
     {
@@ -24,6 +19,13 @@ class UsuarioController extends Controller
     public function index()
     {
         //
+
+        if (auth()->user()->role == 2) {
+            return redirect('cliente');
+        }else if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
+
         $datos['usuarios'] = Usuario::select('usuario.id', 'usuario.DNI', 'usuario.nombre',
                                 'usuario.telefono', 'usuario.direccion', 'usuario.email',
                                 'role.rol')
@@ -38,28 +40,29 @@ class UsuarioController extends Controller
         return view('usuario.index', $datos, $contador);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
+        if (auth()->user()->role == 2) {
+            return redirect('cliente');
+        }else if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
+
         $contador = $this->count();
 
         return view('usuario.create', $contador);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
+
+        if (auth()->user()->role == 2) {
+            return redirect('cliente');
+        }else if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
 
         $datosUsuario = $this->validate(request(), [
             'email' => 'email|required|string|unique:usuario',
@@ -80,25 +83,16 @@ class UsuarioController extends Controller
         return redirect('usuario')->with('Mensaje', 'Trabajador agregado correctamente.' );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Usuario  $usuario
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Usuario $usuario)
-    {
-        //
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Usuario  $usuario
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
+
+        if (auth()->user()->role == 2) {
+            return redirect('cliente');
+        }else if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
+
         $usuarios = Usuario::findOrFail($id);
 
         $contador = $this->count();
@@ -106,16 +100,14 @@ class UsuarioController extends Controller
         return view('usuario.edit', compact('usuarios'), $contador);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Usuario $usuario
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
+        if (auth()->user()->role == 2) {
+            return redirect('cliente');
+        }else if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
 
         $datosUsuario = request()->except(['_token', '_method']);
 
@@ -137,15 +129,16 @@ class UsuarioController extends Controller
         return redirect('usuario')->with('Mensaje', 'Trabajador actualizado correctamente.' );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Usuario $usuario
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
+
+        if (auth()->user()->role == 2) {
+            return redirect('cliente');
+        }else if (auth()->user()->role == 3) {
+            return redirect('informe');
+        }
+        
         Usuario::where('id', '=', $id)->update([
             'estado' => 0
         ]);
