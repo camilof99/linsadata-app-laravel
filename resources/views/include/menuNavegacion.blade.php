@@ -16,13 +16,14 @@
             </figure>
             <ul class="full-box list-unstyled text-center">
                 <li>
-                    <a href="my-data.html" title="Mis datos">
-                        <i class="zmdi zmdi-account-circle "></i>
-                    </a>
+                    <form id="formularioaenviar" method="post" action="{{ route('logout') }}">
+                        {{ csrf_field() }}
+                        <button type="submit"><i class="zmdi zmdi-power zmdi-hc-lg zmdi-hc-fw"></i></button>
+                    </form>
                 </li>
                 <li>
-                    <a href="my-account.html" title="Mi cuenta">
-                        <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+                    <a href="{{ route('logout') }}" method="post">
+                        <i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Salir
                     </a>
                 </li>
                 <li>

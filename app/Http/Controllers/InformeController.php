@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\App;
 class InformeController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {

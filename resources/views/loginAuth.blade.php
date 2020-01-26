@@ -14,8 +14,6 @@
     <div class="section_index">
         <div class="bg_trans">
 
-        @include('include.menuInfo')
-
           <div class="cont_sect_index">
             <div class="col-md-5 text">
               <h6>Personal altamente calificado</h6>
