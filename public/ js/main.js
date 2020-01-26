@@ -30,8 +30,8 @@ $(document).ready(function(){
 				type: $('#formularioaenviar').attr('method'), 
 				url: $('#formularioaenviar').attr('action'),
 				data: $('#formularioaenviar').serialize(),
-				success: function (data) { window.location.replace("http://localhost/proyectos/laravel/linsadata-app-laravel/public/"); } 
-			  });
+success: function (data) { window.location.replace("http://localhost/linsadata-app-laravel/public/"); }       
+            });
 			
 		});
 	});
