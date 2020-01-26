@@ -31,6 +31,8 @@ class InsumoController extends Controller
     public function create(){
         if (auth()->user()->role == 3) {
             return redirect('informe');
+        } else if (auth()->user()->role == 1) {
+            return redirect('dashboard');
         }
         
         $contador = (new UsuarioController)->count();
@@ -41,6 +43,8 @@ class InsumoController extends Controller
 
         if (auth()->user()->role == 3) {
             return redirect('informe');
+        } else if (auth()->user()->role == 1) {
+            return redirect('dashboard');
         }
 
         $insumos = new Insumo;
@@ -66,6 +70,8 @@ class InsumoController extends Controller
     public function edit($id){
         if (auth()->user()->role == 3) {
             return redirect('informe');
+        } else if (auth()->user()->role == 1) {
+            return redirect('dashboard');
         }
 
         $insumo = Insumo::findOrFail($id);
@@ -76,6 +82,8 @@ class InsumoController extends Controller
     public function update(Request $request, $id){
         if (auth()->user()->role == 3) {
             return redirect('informe');
+        } else if (auth()->user()->role == 1) {
+            return redirect('dashboard');
         }
 
         $insumos = Insumo::findOrFail($id);
@@ -100,6 +108,8 @@ class InsumoController extends Controller
 
         if (auth()->user()->role == 3) {
             return redirect('informe');
+        } else if (auth()->user()->role == 1) {
+            return redirect('dashboard');
         }
 
         Insumo::where('id', '=', $id)->update([

@@ -17,6 +17,16 @@ class InformeController extends Controller
     public function index()
     {
         //
+        if(auth()->user()->role == 3){
+        $datos['informes'] = Informe::select('informes.id', 'informes.descripcion', 
+                                'u.nombre as usuario', 'c.nombre as cliente',
+                                 'informes.created_at')
+                            ->join('usuario as u', 'u.id', '=', 'informes.id_usuario')
+                            ->join('usuario as c', 'c.id', '=', 'informes.id_cliente')
+                            ->where('informes.estado', '=', '1')
+                            ->where('informes.id_cliente', '=', auth()->user()->id)
+                            ->paginate(2);
+        }else{
         $datos['informes'] = Informe::select('informes.id', 'informes.descripcion', 
                                 'u.nombre as usuario', 'c.nombre as cliente',
                                  'informes.created_at')
@@ -24,15 +34,19 @@ class InformeController extends Controller
                             ->join('usuario as c', 'c.id', '=', 'informes.id_cliente')
                             ->where('informes.estado', '=', '1')
                             ->paginate(2);
-
+        }
         $contador = (new UsuarioController)->count();
-
         return view('informe.index', $contador, $datos);
     }
 
     public function create()
     {
         //
+        if (auth()->user()->role == 3) {
+            return redirect('informe');
+        } else if (auth()->user()->role == 1) {
+            return redirect('dashboard');
+        }
         $contador = (new UsuarioController)->count();
 
         return view('informe.create', $contador);
@@ -42,6 +56,12 @@ class InformeController extends Controller
     public function store(Request $request)
     {
         //
+        if (auth()->user()->role == 3) {
+            return redirect('informe');
+        } else if (auth()->user()->role == 1) {
+            return redirect('dashboard');
+        }
+
         $value = $request['cliente'];
         $exploded_value = explode('|', $value);
         $cliente_nombre = $exploded_value[0];
@@ -71,6 +91,12 @@ class InformeController extends Controller
     public function destroy($id)
     {
         //
+
+        if (auth()->user()->role == 3) {
+            return redirect('informe');
+        } else if (auth()->user()->role == 2) {
+            return redirect('cliente');
+        }
 
         Informe::where('id', '=', $id)->update([
             'estado' => 0

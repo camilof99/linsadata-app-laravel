@@ -38,6 +38,8 @@ class ClienteController extends Controller
         //
         if (auth()->user()->role == 3) {
             return redirect('informe');
+        } else if (auth()->user()->role == 2) {
+            return redirect('cliente');
         }
 
         $contador = (new UsuarioController)->count();
@@ -51,6 +53,8 @@ class ClienteController extends Controller
 
         if (auth()->user()->role == 3) {
             return redirect('informe');
+        } else if (auth()->user()->role == 2) {
+            return redirect('cliente');
         }
 
         $datosUsuario = $this->validate(request(), [
@@ -77,6 +81,8 @@ class ClienteController extends Controller
         //
         if (auth()->user()->role == 3) {
             return redirect('informe');
+        } else if (auth()->user()->role == 2) {
+            return redirect('cliente');
         }
 
         $usuarios = Usuario::findOrFail($id);
@@ -91,6 +97,8 @@ class ClienteController extends Controller
         //
         if (auth()->user()->role == 3) {
             return redirect('informe');
+        } else if (auth()->user()->role == 2) {
+            return redirect('cliente');
         }
 
         $datosUsuario = request()->except(['_token', '_method']);
@@ -117,6 +125,8 @@ class ClienteController extends Controller
         //
         if (auth()->user()->role == 3) {
             return redirect('informe');
+        } else if (auth()->user()->role == 2) {
+            return redirect('cliente');
         }
         
         Usuario::destroy($id);Usuario::where('id', '=', $id)->update([
